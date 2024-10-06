@@ -61,9 +61,11 @@ val sbtdynver = project.dependsOn(dynverLib).enablePlugins(SbtPlugin).settings(
   scriptedDependencies := Seq(dynver / publishLocal, publishLocal).dependOn.value,
   scriptedLaunchOpts   += s"-Dplugin.version=${version.value}",
   scriptedLaunchOpts   += s"-Dsbt.boot.directory=${file(sys.props("user.home")) / ".sbt" / "boot"}",
+  crossScalaVersions   += scala3,
   (pluginCrossBuild / sbtVersion) := {
     scalaBinaryVersion.value match {
       case "2.12" => "1.3.0"
+      case _ => "2.0.0-M2"
     }
   },
   publishSettings,
