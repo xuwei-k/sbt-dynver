@@ -1,4 +1,4 @@
-dependsOn(RootProject(file("bar")))
+sbt.dependsOn(RootProject(file("bar")))
 
 def check(a: String, e: String) = assert(a == e, s"Version mismatch: Expected $e, Incoming $a")
 
